@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>جدول عضو الفريق التنفيذي - النسخة المرنة</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* 1. SETUP & VARIABLES */
+        :root {
+            --moe-green: #007A3D;
+            --moe-dark-green: #005a2d;
+            --moe-gold: #cda06d;
+            --text-dark: #1f2937;
+            --bg-light: #f3f4f6;
+            --white: #ffffff;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --radius: 12px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            font-family: 'Tajawal', sans-serif;
+            color: var(--text-dark);
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        /* 2. MAIN CONTAINER (Responsive Paper) */
+        .main-container {
+            background-color: var(--white);
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 40px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            position: relative;
+            border-top: 8px solid var(--moe-green);
+        }
+
+        /* 3. HEADER SECTION */
+        .moe-header {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            align-items: center;
+            border-bottom: 2px solid var(--moe-green);
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+            gap: 20px;
+        }
+
+        .header-text {
+            text-align: right;
+            color: var(--moe-green);
+            font-weight: 700;
+            font-size: 1rem;
+            line-height: 1.8;
+        }
+
+        .header-logo-container {
+            text-align: center;
+        }
+
+        .header-logo {
+            height: 120px;
+            max-width: 100%;
+        }
+        
+        /* Empty div for balance */
+        .header-spacer { }
+
+        @media (max-width: 768px) {
+            .moe-header {
+                display: flex;
+                flex-direction: column-reverse;
+                text-align: center;
+            }
+            .header-text { text-align: center; }
+        }
+
+        /* 4. CONTROLS SECTION (No-Print) */
+        .controls-section {
+            background-color: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: var(--radius);
+            padding: 25px;
+            margin-bottom: 30px;
+        }
+
+        .controls-title {
+            color: var(--moe-green);
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .input-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        @media (min-width: 768px) {
+            .input-grid { grid-template-columns: 1fr 1fr; }
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            font-family: 'Tajawal';
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus {
+            border-color: var(--moe-green);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(0, 122, 61, 0.1);
+        }
+
+        .btn {
+            background-color: var(--moe-green);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-family: 'Tajawal';
+            font-weight: 700;
+            cursor: pointer;
+            transition: background 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn:hover {
+            background-color: var(--moe-dark-green);
+        }
+
+        .btn-print {
+            background-color: var(--moe-gold);
+            color: #fff;
+            padding: 12px 24px;
+            font-size: 1.1rem;
+        }
+        .btn-print:hover {
+            background-color: #b88d5d;
+        }
+        
+        .btn-save {
+            background-color: #0ea5e9; /* Sky Blue */
+            color: white;
+            padding: 12px 24px;
+            font-size: 1.1rem;
+        }
+        .btn-save:hover {
+            background-color: #0284c7;
+        }
+
+        .schools-tag-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+            padding: 10px;
+            background: white;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+            min-height: 50px;
+        }
+
+        .school-tag {
+            background: #dcfce7;
+            color: var(--moe-dark-green);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        /* Font Size Control */
+        .range-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: white;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+        }
+        .range-slider {
+            flex: 1;
+            accent-color: var(--moe-green);
+        }
+
+        /* 5. SCHEDULE SECTION */
+        .schedule-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--moe-green);
+        }
+
+        .table-responsive {
+            overflow-x: auto;
+            margin-bottom: 40px;
+            border-radius: 8px;
+            border: 1px solid #e5e7eb;
+        }
+
+        .schedule-table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 800px; /* Ensure table doesn't squash too much */
+            table-layout: fixed; /* Better for multiline text wrapping */
+        }
+
+        .schedule-table th, .schedule-table td {
+            border: 1px solid #cbd5e1;
+            padding: 5px;
+            text-align: center;
+            word-wrap: break-word;
+        }
+
+        .schedule-table th {
+            background-color: var(--moe-green);
+            color: white;
+            font-weight: 700;
+            white-space: nowrap;
+            height: 45px;
+        }
+
+        .schedule-table tr:nth-child(even) {
+            background-color: #f8fafc;
+        }
+
+        .schedule-table td {
+            vertical-align: middle; /* Center vertically if little text */
+            height: auto; /* Allow growth */
+        }
+        
+        /* The Interactive Cell */
+        .cell-content {
+            min-height: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            width: 100%;
+            height: 100%;
+            padding: 4px;
+            transition: background 0.2s;
+            white-space: pre-wrap; /* Preserve line breaks */
+            line-height: 1.3;
+        }
+        
+        .cell-content:hover {
+            background-color: rgba(0, 122, 61, 0.05);
+            outline: 1px dashed var(--moe-green);
+        }
+        
+        .cell-content:empty::before {
+            content: '...';
+            color: #cbd5e1;
+        }
+
+        /* Specific Column Widths */
+        .col-week { width: 50px; background-color: #f1f5f9; font-weight: bold; }
+        .col-date { width: 110px; font-size: 0.85rem; direction: ltr; }
+        .col-day { width: auto; }
+
+        .vacation {
+            background-color: #e2e8f0 !important;
+            color: #ef4444;
+            font-weight: 800;
+            letter-spacing: 1px;
+            cursor: default;
+        }
+
+        .footer-note {
+            text-align: center;
+            color: #b91c1c;
+            font-weight: 700;
+            margin-top: 20px;
+            padding: 10px;
+            border-top: 2px dashed #cbd5e1;
+        }
+
+        /* 6. MODAL STYLES */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.5);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        
+        .modal-box {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 400px;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .modal-header {
+            font-weight: bold;
+            font-size: 1.2rem;
+            color: var(--moe-green);
+            margin-bottom: 15px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+        }
+        
+        .school-checklist {
+            max-height: 300px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+        
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px;
+            border: 1px solid #eee;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+        .checkbox-item:hover {
+            background-color: #f9f9f9;
+        }
+        .checkbox-item input {
+            width: 18px;
+            height: 18px;
+            accent-color: var(--moe-green);
+        }
+        
+        .modal-actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+        }
+        
+        /* Toast Notification */
+        .toast {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            opacity: 0;
+            transition: opacity 0.3s;
+            pointer-events: none;
+            z-index: 2000;
+        }
+        .toast.show {
+            opacity: 1;
+        }
+
+        /* 7. PRINT STYLES */
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .main-container {
+                box-shadow: none;
+                margin: 0;
+                width: 100%;
+                max-width: 100%;
+                border: none;
+                padding: 0;
+            }
+            /* Explicitly enforce grid layout for print to keep header correct */
+            .moe-header {
+                display: grid !important;
+                grid-template-columns: 1fr auto 1fr !important;
+                align-items: center !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            .header-text {
+                text-align: right !important;
+            }
+            .header-logo-container {
+                text-align: center !important;
+            }
+            .controls-section, .btn, .modal-overlay {
+                display: none !important;
+            }
+            .table-responsive {
+                border: none;
+                overflow: visible;
+                margin-bottom: 20px;
+            }
+            .cell-content:hover {
+                background: none;
+                outline: none;
+            }
+            .cell-content:empty::before {
+                content: '';
+            }
+            .schedule-table th {
+                background-color: #f1f1f1 !important; /* Save ink */
+                color: black !important;
+                border: 1px solid #000;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            .schedule-table td {
+                border: 1px solid #000;
+            }
+            .page-break {
+                page-break-before: always;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="main-container">
+        
+        <!-- HEADER -->
+        <header class="moe-header">
+            <!-- Text Right -->
+            <div class="header-text">
+                المملكة العربية السعودية<br>
+                وزارة التعليم<br>
+                الإدارة العامة للتعليم بالرياض<br>
+                النطاق السادس
+            </div>
+
+            <!-- Logo Center (Fixed with verified MOE Logo) -->
+            <div class="header-logo-container">
+                <img src="https://upload.wikimedia.org/wikipedia/ar/9/98/MoE_Logo.svg" alt="وزارة التعليم" class="header-logo">
+            </div>
+
+            <!-- Empty Left (for balance) -->
+            <div class="header-spacer"></div>
+        </header>
+
+        <!-- CONTROLS (Hidden in Print) -->
+        <section class="controls-section">
+            <div class="controls-title">
+                <i class="fa-solid fa-sliders"></i> لوحة التحكم والإعدادات
+            </div>
+            
+            <div class="input-grid">
+                <!-- Name Input -->
+                <div class="form-group">
+                    <label>اسم عضو الفريق التنفيذي:</label>
+                    <input type="text" class="form-control" id="supervisorInput" placeholder="أدخل الاسم هنا..." oninput="updateSupervisor()">
+                </div>
+
+                <!-- Add Schools -->
+                <div class="form-group">
+                    <label>إدارة المدارس (قائمة الاختيارات) - المهمة:</label>
+                    <div style="display: flex; gap: 10px;">
+                        <input type="text" class="form-control" id="schoolInput" placeholder="أدخل اسم المدرسة..." onkeypress="handleEnter(event)">
+                        <button class="btn" onclick="addSchool()"><i class="fa-solid fa-plus"></i></button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Font Size Control -->
+            <div class="form-group" style="margin-top: 20px;">
+                <label>حجم خط الجدول (للتكبير والتصغير): <span id="fontSizeVal">14px</span></label>
+                <div class="range-container">
+                    <i class="fa-solid fa-font" style="font-size: 10px;"></i>
+                    <input type="range" class="range-slider" min="10" max="24" value="14" oninput="updateTableFont(this.value)">
+                    <i class="fa-solid fa-font" style="font-size: 20px;"></i>
+                </div>
+            </div>
+
+            <!-- School Tags -->
+            <div class="schools-tag-container" id="tagsContainer">
+                <span style="color: #94a3b8; font-size: 0.9rem; align-self: center;">لم يتم إضافة مدارس بعد. أضف المدارس لتظهر في القائمة.</span>
+            </div>
+
+            <!-- Action Buttons -->
+             <div style="margin-top: 20px; display: flex; gap: 10px; justify-content: flex-end;">
+                <button class="btn btn-save" onclick="saveData()">
+                    <i class="fa-solid fa-floppy-disk"></i> حفظ البيانات
+                </button>
+                <button class="btn btn-print" onclick="window.print()">
+                    <i class="fa-solid fa-print"></i> طباعة الجدول
+                </button>
+             </div>
+        </section>
+
+        <!-- DISPLAY NAME (For Print) -->
+        <div class="schedule-info">
+            <span>جدول الزيارات الفصلي</span>
+            <span>عضو الفريق التنفيذي: <span id="supervisorDisplay" style="text-decoration: underline;">..................</span></span>
+        </div>
+
+        <!-- TABLE PART 1 -->
+        <div class="table-responsive">
+            <table class="schedule-table" id="mainTable">
+                <thead>
+                    <tr>
+                        <th class="col-week">م</th>
+                        <th class="col-date">التاريخ</th>
+                        <th class="col-day">الأحد</th>
+                        <th class="col-day">الاثنين</th>
+                        <th class="col-day">الثلاثاء</th>
+                        <th class="col-day">الأربعاء</th>
+                        <th class="col-day">الخميس</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td class="col-week">(1)</td><td class="col-date">29/ 7 – 3/ 8</td>
+                        <td><div class="cell-content" onclick="openModal(this)"></div></td>
+                        <td><div class="cell-content" onclick="openModal(this)"></div></td>
+                        <td><div class="cell-content" onclick="openModal(this)"></div></td>
+                        <td><div class="cell-content" onclick="openModal(this)"></div></td>
+                        <td><div class="cell-content" onclick="openModal(this)"></div></td>
+                    </tr>
+                    <tr><td class="col-week">(2)</td><td class="col-date">6/ 8 – 10/ 8</td>
+                        <td><div class="cell-content" onclick="openModal(this)"></div></td>
+                        <td><div class="cell-content" onclick="openModal(this)"></div></td>
+                        <td><div class="cell-content" onclick="openModal(this)"></div></td>
+                        <td><div class="cell-content" onclick="openModal(this)"></div></td>
+                        <td><div class="cell-content" onclick="openModal(this)"></div></td>
+                    </tr>
+                    <tr><td class="col-week">(3)</td><td class="col-date">13/ 8 – 17/ 8</td>
+                        <td><div class="cell-content" onclick="openModal(this)"></div></td>
+                        <td><div class="cell-content" onclick="openModal(this)"></div></td>
+                        <td><div class="cell-content" onclick="openModal(this)"></div></td>
+                        <td><div class="cell-content" onclick="openModal(this)"></div></td>
+                        <td><div class="cell-content" onclick="openModal(this)"></div></td>
+                    </tr>
+                    <tr><td class="col-week">(4)</td><td class="col-date">20/ 8 – 24/ 8</td>
+                        <td><div class="cell-content" onclick="openModal(this)"></div></td>
+                        <td><div class="cell-content" onclick="openModal(this)"></div></td>
+                        <td><div class="cell-content" onclick="openModal(this)"></div></td>
+                        <td><div class="cell-content" onclick="openModal(this)"></div></td>
+                        <td><div class="cell-content" onclick="openModal(this)"></div></td>
+                    </tr>
+                    <tr><td class="col-week">(5)</td><td class="col-date">27/ 8 – 2/ 9</td>
+                        <td><div class="cell-content" onclick="openModal(this)"></div></td>
+                        <td><div class="cell-content" onclick="openModal(this)"></div></td>
+                        <td><div class="cell-content" onclick="openModal(this)"></div></td>
+                        <td><div class="cell-content" onclick="openModal(this)"></div></td>
+                        <td><div class="cell-content" onclick="openModal(this)"></div></td>
+                    </tr>
+                    <tr><td class="col-week">(6)</td><td class="col-date">5/ 9 – 9/ 9</td>
+                        <td class="vacation">إجازة</td>
+                        <td><div class="cell-content" onclick="openModal(this)"></div></td>
+                        <td><div class="cell-content" onclick="openModal(this)"></div></td>
+                        <td><div class="cell-content" onclick="openModal(this)"></div></td>
+                        <td><div class="cell-content" onclick="openModal(this)"></div></td>
+                    </tr>
+                    <tr><td class="col-week">(7)</td><td class="col-date">12/ 9 – 16/ 9</td>
+                        <td><div class="cell-content" onclick="openModal(this)"></div></td>
+                        <td><div class="cell-content" onclick="openModal(this)"></div></td>
+                        <td><div class="cell-content" onclick="openModal(this)"></div></td>
+                        <td><div class="cell-content" onclick="openModal(this)"></div></td>
+                        <td><div class="cell-content" onclick="openModal(this)"></div></td>
+                    </tr>
+                    <tr><td class="col-week">(8)</td><td class="col-date">10/ 10 – 14/ 10</td>
+                        <td><div class="cell-content" onclick="openModal(this)"></div></td>
+                        <td><div class="cell-content" onclick="openModal(this)"></div></td>
+                        <td><div class="cell-content" onclick="openModal(this)"></div></td>
+                        <td><div class="cell-content" onclick="openModal(this)"></div></td>
+                        <td><div class="cell-content" onclick="openModal(this)"></div></td>
+                    </tr>
+                    <tr><td class="col-week">(9)</td><td class="col-date">17/ 10 – 21/ 10</td>
+                        <td><div class="cell-content" onclick="openModal(this)"></div></td>
+                        <td><div class="cell-content" onclick="openModal(this)"></div></td>
+                        <td><div class="cell-content" onclick="openModal(this)"></div></td>
+                        <td><div class="cell-content" onclick="openModal(this)"></div></td>
+                        <td><div class="cell-content" onclick="openModal(this)"></div></td>
+                    </tr>
+                    <tr><td class="col-week">(10)</td><td class="col-date">24/ 10 – 28/ 10</td>
+                        <td><div class="cell-content" onclick="openModal(this)"></div></td>
+                        <td><div class="cell-content" onclick="openModal(this)"></div></td>
+                        <td><div class="cell-content" onclick="openModal(this)"></div></td>
+                        <td><div class="cell-content" onclick="openModal(this)"></div></td>
+                        <td><div class="cell-content" onclick="openModal(this)"></div></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Optional Page Break for Printing -->
+        <div class="page-break"></div>
+
+        <!-- TABLE PART 2 -->
+        <div class="table-responsive">
+            <table class="schedule-table" id="secondTable">
+                <thead>
+                    <tr>
+                        <th class="col-week">م</th>
+                        <th class="col-date">التاريخ</th>
+                        <th class="col-day">الأحد</th>
+                        <th class="col-day">الاثنين</th>
+                        <th class="col-day">الثلاثاء</th>
+                        <th class="col-day">الأربعاء</th>
+                        <th class="col-day">الخميس</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td class="col-week">(11)</td><td class="col-date">2/ 11 – 6/ 11</td>
+                        <td><div class="cell-content" onclick="openModal(this)"></div></td>
+                        <td><div class="cell-content" onclick="openModal(this)"></div></td>
+                        <td><div class="cell-content" onclick="openModal(this)"></div></td>
+                        <td><div class="cell-content" onclick="openModal(this)"></div></td>
+                        <td><div class="cell-content" onclick="openModal(this)"></div></td>
+                    </tr>
+                    <tr><td class="col-week">(12)</td><td class="col-date">9/ 11 – 13/ 11</td>
+                        <td><div class="cell-content" onclick="openModal(this)"></div></td>
+                        <td><div class="cell-content" onclick="openModal(this)"></div></td>
+                        <td><div class="cell-content" onclick="openModal(this)"></div></td>
+                        <td><div class="cell-content" onclick="openModal(this)"></div></td>
+                        <td><div class="cell-content" onclick="openModal(this)"></div></td>
+                    </tr>
+                    <tr><td class="col-week">(13)</td><td class="col-date">16/ 11 – 20/ 11</td>
+                        <td><div class="cell-content" onclick="openModal(this)"></div></td>
+                        <td><div class="cell-content" onclick="openModal(this)"></div></td>
+                        <td><div class="cell-content" onclick="openModal(this)"></div></td>
+                        <td><div class="cell-content" onclick="openModal(this)"></div></td>
+                        <td><div class="cell-content" onclick="openModal(this)"></div></td>
+                    </tr>
+                    <tr><td class="col-week">(14)</td><td class="col-date">23/ 11 – 27/ 11</td>
+                        <td><div class="cell-content" onclick="openModal(this)"></div></td>
+                        <td><div class="cell-content" onclick="openModal(this)"></div></td>
+                        <td><div class="cell-content" onclick="openModal(this)"></div></td>
+                        <td><div class="cell-content" onclick="openModal(this)"></div></td>
+                        <td><div class="cell-content" onclick="openModal(this)"></div></td>
+                    </tr>
+                    <tr><td class="col-week">(15)</td><td class="col-date">30/ 11 – 4/ 12</td>
+                        <td><div class="cell-content" onclick="openModal(this)"></div></td>
+                        <td><div class="cell-content" onclick="openModal(this)"></div></td>
+                        <td><div class="cell-content" onclick="openModal(this)"></div></td>
+                        <td><div class="cell-content" onclick="openModal(this)"></div></td>
+                        <td><div class="cell-content" onclick="openModal(this)"></div></td>
+                    </tr>
+                    <tr><td class="col-week">(16)</td><td class="col-date">16/ 12 – 18/ 12</td>
+                        <td class="vacation">إجازة</td>
+                        <td class="vacation">إجازة</td>
+                        <td><div class="cell-content" onclick="openModal(this)"></div></td>
+                        <td><div class="cell-content" onclick="openModal(this)"></div></td>
+                        <td><div class="cell-content" onclick="openModal(this)"></div></td>
+                    </tr>
+                    <tr><td class="col-week">(17)</td><td class="col-date">21/ 12 – 25/ 12</td>
+                        <td><div class="cell-content" onclick="openModal(this)"></div></td>
+                        <td><div class="cell-content" onclick="openModal(this)"></div></td>
+                        <td><div class="cell-content" onclick="openModal(this)"></div></td>
+                        <td><div class="cell-content" onclick="openModal(this)"></div></td>
+                        <td><div class="cell-content" onclick="openModal(this)"></div></td>
+                    </tr>
+                    <tr><td class="col-week">(18)</td><td class="col-date">28/ 12 – 3/ 1</td>
+                        <td><div class="cell-content" onclick="openModal(this)"></div></td>
+                        <td><div class="cell-content" onclick="openModal(this)"></div></td>
+                        <td><div class="cell-content" onclick="openModal(this)"></div></td>
+                        <td><div class="cell-content" onclick="openModal(this)"></div></td>
+                        <td><div class="cell-content" onclick="openModal(this)"></div></td>
+                    </tr>
+                    <tr><td class="col-week">(19)</td><td class="col-date">6/ 1 – 10/ 1</td>
+                        <td><div class="cell-content" onclick="openModal(this)"></div></td>
+                        <td><div class="cell-content" onclick="openModal(this)"></div></td>
+                        <td><div class="cell-content" onclick="openModal(this)"></div></td>
+                        <td><div class="cell-content" onclick="openModal(this)"></div></td>
+                        <td><div class="cell-content" onclick="openModal(this)"></div></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="footer-note">
+            إجازة نهاية العام الدراسي بنهاية يوم الخميس 10/ 1/ 1448هـ
+        </div>
+
+    </div>
+
+    <!-- SELECTION MODAL -->
+    <div class="modal-overlay" id="schoolModal">
+        <div class="modal-box">
+            <div class="modal-header">اختر المدارس لليوم المحدد</div>
+            <div class="school-checklist" id="modalChecklist">
+                <!-- Checkboxes injected here -->
+            </div>
+            <div class="modal-actions">
+                <button class="btn" style="background-color: #ef4444;" onclick="closeModal()">إلغاء</button>
+                <button class="btn" onclick="saveSelection()">حفظ الاختيار</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Toast Message -->
+    <div class="toast" id="toastMsg">تم حفظ البيانات بنجاح!</div>
+
+    <script>
+        // State Management
+        let schools = [];
+        let activeCell = null;
+
+        // DOM Elements
+        const schoolInput = document.getElementById('schoolInput');
+        const tagsContainer = document.getElementById('tagsContainer');
+        const supervisorInput = document.getElementById('supervisorInput');
+        const supervisorDisplay = document.getElementById('supervisorDisplay');
+        const modal = document.getElementById('schoolModal');
+        const checklist = document.getElementById('modalChecklist');
+        const fontSizeVal = document.getElementById('fontSizeVal');
+        const toast = document.getElementById('toastMsg');
+
+        // Functions
+        function updateSupervisor() {
+            const val = supervisorInput.value.trim();
+            supervisorDisplay.textContent = val ? val : "..................";
+            supervisorDisplay.style.textDecoration = val ? "none" : "underline";
+        }
+
+        function handleEnter(e) {
+            if (e.key === 'Enter') addSchool();
+        }
+
+        function addSchool() {
+            const name = schoolInput.value.trim();
+            if (name && !schools.includes(name)) {
+                schools.push(name);
+                schoolInput.value = '';
+                schoolInput.focus();
+                renderTags();
+            } else if (schools.includes(name)) {
+                alert('هذه المدرسة موجودة بالفعل في القائمة.');
+            }
+        }
+
+        function removeSchool(name) {
+            schools = schools.filter(s => s !== name);
+            renderTags();
+        }
+
+        function renderTags() {
+            if (schools.length === 0) {
+                tagsContainer.innerHTML = '<span style="color: #94a3b8; font-size: 0.9rem; align-self: center;">لم يتم إضافة مدارس بعد. أضف المدارس لتظهر في القائمة.</span>';
+                return;
+            }
+
+            tagsContainer.innerHTML = schools.map(school => `
+                <div class="school-tag">
+                    ${school}
+                    <i class="fa-solid fa-xmark" style="cursor:pointer; margin-right:5px;" onclick="removeSchool('${school}')"></i>
+                </div>
+            `).join('');
+        }
+
+        // FONT RESIZING
+        function updateTableFont(val) {
+            fontSizeVal.textContent = val + "px";
+            const cells = document.querySelectorAll('.schedule-table td, .schedule-table th, .cell-content');
+            cells.forEach(cell => {
+                cell.style.fontSize = val + "px";
+            });
+        }
+
+        // MODAL LOGIC
+        function openModal(cellElement) {
+            if (schools.length === 0) {
+                alert("يرجى إضافة مدارس في لوحة التحكم أولاً.");
+                return;
+            }
+            
+            activeCell = cellElement;
+            modal.style.display = "flex";
+            
+            const currentText = activeCell.innerText;
+            
+            checklist.innerHTML = schools.map(school => {
+                const isChecked = currentText.includes(school) ? 'checked' : '';
+                return `
+                <label class="checkbox-item">
+                    <input type="checkbox" value="${school}" ${isChecked}>
+                    <span>${school}</span>
+                </label>
+                `;
+            }).join('');
+        }
+
+        function closeModal() {
+            modal.style.display = "none";
+            activeCell = null;
+        }
+
+        function saveSelection() {
+            if (!activeCell) return;
+            
+            const checkboxes = checklist.querySelectorAll('input[type="checkbox"]:checked');
+            const selectedSchools = Array.from(checkboxes).map(cb => cb.value);
+            
+            activeCell.innerText = selectedSchools.join('\n');
+            closeModal();
+        }
+
+        // SAVE & LOAD DATA
+        function saveData() {
+            const data = {
+                supervisorName: supervisorInput.value,
+                schoolList: schools,
+                // Map all cells to their content
+                cells: Array.from(document.querySelectorAll('.cell-content')).map(cell => cell.innerText)
+            };
+            
+            localStorage.setItem('scheduleData', JSON.stringify(data));
+            
+            // Show Toast
+            toast.classList.add('show');
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+        
+        function loadData() {
+            const saved = localStorage.getItem('scheduleData');
+            if (saved) {
+                const data = JSON.parse(saved);
+                
+                // Restore Supervisor Name
+                if (data.supervisorName) {
+                    supervisorInput.value = data.supervisorName;
+                    updateSupervisor();
+                }
+                
+                // Restore Schools List
+                if (data.schoolList && Array.isArray(data.schoolList)) {
+                    schools = data.schoolList;
+                    renderTags();
+                }
+                
+                // Restore Cells
+                if (data.cells && Array.isArray(data.cells)) {
+                    const cellElements = document.querySelectorAll('.cell-content');
+                    data.cells.forEach((content, index) => {
+                        if (cellElements[index]) {
+                            cellElements[index].innerText = content;
+                        }
+                    });
+                }
+            }
+        }
+
+        // Event Listeners
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) closeModal();
+        });
+        
+        // Init
+        updateTableFont(14);
+        loadData(); // Load saved data on startup
+    </script>
+</body>
+</html>
