@@ -2,7 +2,7 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>جدول عضو الفريق التنفيذي - النسخة المرنة</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -25,7 +25,6 @@
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            -webkit-tap-highlight-color: transparent;
         }
 
         body {
@@ -33,15 +32,15 @@
             font-family: 'Tajawal', sans-serif;
             color: var(--text-dark);
             line-height: 1.6;
-            padding: 10px; /* Reduced padding for mobile */
+            padding: 20px;
         }
 
-        /* 2. MAIN CONTAINER */
+        /* 2. MAIN CONTAINER (Responsive Paper) */
         .main-container {
             background-color: var(--white);
             max-width: 1100px;
             margin: 0 auto;
-            padding: 20px; /* Reduced padding */
+            padding: 40px;
             border-radius: var(--radius);
             box-shadow: var(--shadow);
             position: relative;
@@ -55,8 +54,8 @@
             align-items: center;
             border-bottom: 2px solid var(--moe-green);
             padding-bottom: 20px;
-            margin-bottom: 20px;
-            gap: 15px;
+            margin-bottom: 30px;
+            gap: 20px;
         }
 
         .header-text {
@@ -64,7 +63,7 @@
             color: var(--moe-green);
             font-weight: 700;
             font-size: 1rem;
-            line-height: 1.6;
+            line-height: 1.8;
         }
 
         .header-logo-container {
@@ -72,24 +71,34 @@
         }
 
         .header-logo {
-            height: 100px; /* Slightly smaller base size */
+            height: 120px;
             max-width: 100%;
         }
         
+        /* Empty div for balance */
         .header-spacer { }
 
-        /* 4. CONTROLS SECTION */
+        @media (max-width: 768px) {
+            .moe-header {
+                display: flex;
+                flex-direction: column-reverse;
+                text-align: center;
+            }
+            .header-text { text-align: center; }
+        }
+
+        /* 4. CONTROLS SECTION (No-Print) */
         .controls-section {
             background-color: #f8fafc;
             border: 1px solid #e2e8f0;
             border-radius: var(--radius);
-            padding: 20px;
-            margin-bottom: 20px;
+            padding: 25px;
+            margin-bottom: 30px;
         }
 
         .controls-title {
             color: var(--moe-green);
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             margin-bottom: 15px;
             font-weight: 800;
             display: flex;
@@ -100,14 +109,17 @@
         .input-grid {
             display: grid;
             grid-template-columns: 1fr;
-            gap: 15px;
+            gap: 20px;
+        }
+
+        @media (min-width: 768px) {
+            .input-grid { grid-template-columns: 1fr 1fr; }
         }
 
         .form-group label {
             display: block;
-            margin-bottom: 6px;
+            margin-bottom: 8px;
             font-weight: 700;
-            font-size: 0.95rem;
             color: var(--text-dark);
         }
 
@@ -117,7 +129,7 @@
             border: 2px solid #e2e8f0;
             border-radius: 8px;
             font-family: 'Tajawal';
-            font-size: 1rem; /* Better for mobile inputs to prevent zoom */
+            font-size: 1rem;
             transition: all 0.3s ease;
         }
 
@@ -131,7 +143,7 @@
             background-color: var(--moe-green);
             color: white;
             border: none;
-            padding: 12px 20px;
+            padding: 10px 20px;
             border-radius: 8px;
             font-family: 'Tajawal';
             font-weight: 700;
@@ -139,26 +151,48 @@
             transition: background 0.3s;
             display: inline-flex;
             align-items: center;
-            justify-content: center;
             gap: 8px;
-            font-size: 1rem;
-            min-height: 44px; /* Touch target size */
         }
 
         .btn:hover {
             background-color: var(--moe-dark-green);
         }
 
-        .btn-print { background-color: var(--moe-gold); color: #fff; }
-        .btn-print:hover { background-color: #b88d5d; }
+        .btn-print {
+            background-color: var(--moe-gold);
+            color: #fff;
+            padding: 12px 24px;
+            font-size: 1.1rem;
+        }
+        .btn-print:hover {
+            background-color: #b88d5d;
+        }
         
-        .btn-save { background-color: #0ea5e9; color: white; }
-        .btn-save:hover { background-color: #0284c7; }
+        .btn-save {
+            background-color: #0ea5e9; /* Sky Blue */
+            color: white;
+            padding: 12px 24px;
+            font-size: 1.1rem;
+        }
+        .btn-save:hover {
+            background-color: #0284c7;
+        }
+
+        /* Word Export Button */
+        .btn-word {
+            background-color: #2b579a; /* Word Blue */
+            color: white;
+            padding: 12px 24px;
+            font-size: 1.1rem;
+        }
+        .btn-word:hover {
+            background-color: #1e4072;
+        }
 
         .schools-tag-container {
             display: flex;
             flex-wrap: wrap;
-            gap: 8px;
+            gap: 10px;
             margin-top: 15px;
             padding: 10px;
             background: white;
@@ -170,15 +204,16 @@
         .school-tag {
             background: #dcfce7;
             color: var(--moe-dark-green);
-            padding: 6px 12px;
+            padding: 5px 12px;
             border-radius: 20px;
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             font-weight: 600;
             display: flex;
             align-items: center;
             gap: 5px;
         }
         
+        /* Font Size Control */
         .range-container {
             display: flex;
             align-items: center;
@@ -191,57 +226,36 @@
         .range-slider {
             flex: 1;
             accent-color: var(--moe-green);
-            height: 25px; /* Taller for touch */
         }
 
         /* 5. SCHEDULE SECTION */
         .schedule-info {
             display: flex;
-            flex-direction: row;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
             font-weight: 700;
-            font-size: 1rem;
+            font-size: 1.1rem;
             color: var(--moe-green);
-            flex-wrap: wrap;
-            gap: 5px;
-        }
-
-        .scroll-hint {
-            display: none; /* Hidden on desktop */
-            font-size: 0.8rem;
-            color: #64748b;
-            text-align: center;
-            margin-bottom: 5px;
-            animation: pulse 2s infinite;
-        }
-        
-        @keyframes pulse {
-            0% { opacity: 0.6; }
-            50% { opacity: 1; }
-            100% { opacity: 0.6; }
         }
 
         .table-responsive {
             overflow-x: auto;
-            margin-bottom: 30px;
+            margin-bottom: 40px;
             border-radius: 8px;
             border: 1px solid #e5e7eb;
-            -webkit-overflow-scrolling: touch; /* Smooth scroll on iOS */
-            background: white;
         }
 
         .schedule-table {
             width: 100%;
             border-collapse: collapse;
-            min-width: 800px;
-            table-layout: fixed;
+            min-width: 800px; /* Ensure table doesn't squash too much */
+            table-layout: fixed; /* Better for multiline text wrapping */
         }
 
         .schedule-table th, .schedule-table td {
             border: 1px solid #cbd5e1;
-            padding: 4px;
+            padding: 5px;
             text-align: center;
             word-wrap: break-word;
         }
@@ -251,13 +265,21 @@
             color: white;
             font-weight: 700;
             white-space: nowrap;
-            height: 40px;
+            height: 45px;
         }
 
-        .schedule-table tr:nth-child(even) { background-color: #f8fafc; }
+        .schedule-table tr:nth-child(even) {
+            background-color: #f8fafc;
+        }
 
+        .schedule-table td {
+            vertical-align: middle; /* Center vertically if little text */
+            height: auto; /* Allow growth */
+        }
+        
+        /* The Interactive Cell */
         .cell-content {
-            min-height: 44px; /* Minimum touch height */
+            min-height: 40px;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -267,23 +289,23 @@
             height: 100%;
             padding: 4px;
             transition: background 0.2s;
-            white-space: pre-wrap;
+            white-space: pre-wrap; /* Preserve line breaks */
             line-height: 1.3;
         }
         
         .cell-content:hover {
             background-color: rgba(0, 122, 61, 0.05);
+            outline: 1px dashed var(--moe-green);
         }
         
         .cell-content:empty::before {
-            content: '+'; /* Clearer cue for adding on mobile */
+            content: '...';
             color: #cbd5e1;
-            font-size: 1.2rem;
-            font-weight: bold;
         }
 
-        .col-week { width: 45px; background-color: #f1f5f9; font-weight: bold; }
-        .col-date { width: 90px; font-size: 0.8rem; direction: ltr; }
+        /* Specific Column Widths */
+        .col-week { width: 50px; background-color: #f1f5f9; font-weight: bold; }
+        .col-date { width: 110px; font-size: 0.85rem; direction: ltr; }
         .col-day { width: auto; }
 
         .vacation {
@@ -298,10 +320,9 @@
             text-align: center;
             color: #b91c1c;
             font-weight: 700;
-            margin-top: 15px;
+            margin-top: 20px;
             padding: 10px;
             border-top: 2px dashed #cbd5e1;
-            font-size: 0.9rem;
         }
 
         /* 6. MODAL STYLES */
@@ -311,147 +332,90 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: rgba(0,0,0,0.6);
+            background: rgba(0,0,0,0.5);
             display: none;
             justify-content: center;
-            align-items: center; /* Center on Desktop */
+            align-items: center;
             z-index: 1000;
-            padding: 20px;
         }
         
         .modal-box {
             background: white;
-            padding: 20px;
-            border-radius: 16px;
-            width: 100%;
-            max-width: 450px;
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2);
-            display: flex;
-            flex-direction: column;
-            max-height: 80vh; /* Don't overflow screen height */
+            padding: 25px;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 400px;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
         }
         
         .modal-header {
             font-weight: bold;
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             color: var(--moe-green);
             margin-bottom: 15px;
             border-bottom: 1px solid #eee;
             padding-bottom: 10px;
-            text-align: center;
         }
         
         .school-checklist {
-            flex: 1;
+            max-height: 300px;
             overflow-y: auto;
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: 8px;
             margin-bottom: 20px;
-            padding: 5px;
         }
         
         .checkbox-item {
             display: flex;
             align-items: center;
-            gap: 12px;
-            padding: 12px;
+            gap: 10px;
+            padding: 8px;
             border: 1px solid #eee;
-            border-radius: 8px;
+            border-radius: 6px;
             cursor: pointer;
-            background: #f9fafb;
-            transition: background 0.2s;
         }
-        .checkbox-item:active { background-color: #e2e8f0; }
-        
+        .checkbox-item:hover {
+            background-color: #f9f9f9;
+        }
         .checkbox-item input {
-            width: 22px;
-            height: 22px;
+            width: 18px;
+            height: 18px;
             accent-color: var(--moe-green);
         }
         
         .modal-actions {
             display: flex;
-            justify-content: stretch;
+            justify-content: flex-end;
             gap: 10px;
-        }
-        .modal-actions .btn {
-            flex: 1;
         }
         
         /* Toast Notification */
         .toast {
             position: fixed;
-            bottom: 30px;
+            bottom: 20px;
             left: 50%;
             transform: translateX(-50%);
-            background: rgba(31, 41, 55, 0.9);
+            background: rgba(0, 0, 0, 0.8);
             color: white;
-            padding: 12px 24px;
-            border-radius: 30px;
-            font-size: 0.95rem;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-size: 0.9rem;
             opacity: 0;
             transition: opacity 0.3s;
             pointer-events: none;
             z-index: 2000;
-            width: max-content;
-            max-width: 90%;
-            text-align: center;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
         }
-        .toast.show { opacity: 1; }
-
-        /* MOBILE RESPONSIVE TWEAKS */
-        @media (max-width: 768px) {
-            .main-container {
-                padding: 15px;
-                border-top-width: 5px;
-            }
-            
-            /* Header Stack */
-            .moe-header {
-                display: flex;
-                flex-direction: column-reverse; /* Logo on top usually better on paper, but on phone logo top looks cleaner */
-                text-align: center;
-                gap: 10px;
-            }
-            .header-text { text-align: center; font-size: 0.95rem; }
-            .header-logo { height: 80px; }
-            .header-spacer { display: none; }
-
-            /* Controls Stack */
-            .input-grid { grid-template-columns: 1fr; }
-            .form-group div { flex-direction: row; } /* Keep input+btn in row */
-            
-            /* Buttons Stack */
-            .controls-section > div:last-child {
-                flex-direction: column;
-            }
-            .btn { width: 100%; margin-bottom: 5px; }
-            
-            /* Table Scroll Hint */
-            .scroll-hint { display: block; }
-            
-            /* Modal Bottom Sheet Style on Mobile */
-            .modal-overlay {
-                align-items: flex-end; /* Align to bottom */
-                padding: 0;
-            }
-            .modal-box {
-                max-width: 100%;
-                border-radius: 20px 20px 0 0;
-                max-height: 85vh;
-                animation: slideUp 0.3s ease-out;
-            }
-            @keyframes slideUp {
-                from { transform: translateY(100%); }
-                to { transform: translateY(0); }
-            }
+        .toast.show {
+            opacity: 1;
         }
 
         /* 7. PRINT STYLES */
         @media print {
-            body { background: white; padding: 0; }
+            body {
+                background: white;
+                padding: 0;
+            }
             .main-container {
                 box-shadow: none;
                 margin: 0;
@@ -460,25 +424,48 @@
                 border: none;
                 padding: 0;
             }
+            /* Explicitly enforce grid layout for print to keep header correct */
             .moe-header {
                 display: grid !important;
                 grid-template-columns: 1fr auto 1fr !important;
                 align-items: center !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
             }
-            .header-text { text-align: right !important; }
-            .header-logo-container { text-align: center !important; }
-            .controls-section, .btn, .modal-overlay, .scroll-hint { display: none !important; }
-            .table-responsive { border: none; overflow: visible; margin-bottom: 20px; }
-            .cell-content:empty::before { content: ''; }
+            .header-text {
+                text-align: right !important;
+            }
+            .header-logo-container {
+                text-align: center !important;
+            }
+            .controls-section, .btn, .modal-overlay {
+                display: none !important;
+            }
+            .table-responsive {
+                border: none;
+                overflow: visible;
+                margin-bottom: 20px;
+            }
+            .cell-content:hover {
+                background: none;
+                outline: none;
+            }
+            .cell-content:empty::before {
+                content: '';
+            }
             .schedule-table th {
-                background-color: #f1f1f1 !important;
+                background-color: #f1f1f1 !important; /* Save ink */
                 color: black !important;
                 border: 1px solid #000;
                 -webkit-print-color-adjust: exact;
                 print-color-adjust: exact;
             }
-            .schedule-table td { border: 1px solid #000; }
-            .page-break { page-break-before: always; }
+            .schedule-table td {
+                border: 1px solid #000;
+            }
+            .page-break {
+                page-break-before: always;
+            }
         }
     </style>
 </head>
@@ -496,16 +483,16 @@
                 النطاق السادس
             </div>
 
-            <!-- Logo Center -->
+            <!-- Logo Center (Fixed with verified MOE Logo) -->
             <div class="header-logo-container">
                 <img src="https://upload.wikimedia.org/wikipedia/ar/9/98/MoE_Logo.svg" alt="وزارة التعليم" class="header-logo">
             </div>
 
-            <!-- Empty Left -->
+            <!-- Empty Left (for balance) -->
             <div class="header-spacer"></div>
         </header>
 
-        <!-- CONTROLS -->
+        <!-- CONTROLS (Hidden in Print) -->
         <section class="controls-section">
             <div class="controls-title">
                 <i class="fa-solid fa-sliders"></i> لوحة التحكم والإعدادات
@@ -520,47 +507,48 @@
 
                 <!-- Add Schools -->
                 <div class="form-group">
-                    <label>إدارة المدارس (قائمة الاختيارات):</label>
+                    <label>إدارة المدارس (قائمة الاختيارات) - المهمة:</label>
                     <div style="display: flex; gap: 10px;">
-                        <input type="text" class="form-control" id="schoolInput" placeholder="اسم المدرسة..." onkeypress="handleEnter(event)">
+                        <input type="text" class="form-control" id="schoolInput" placeholder="أدخل اسم المدرسة..." onkeypress="handleEnter(event)">
                         <button class="btn" onclick="addSchool()"><i class="fa-solid fa-plus"></i></button>
                     </div>
                 </div>
             </div>
             
             <!-- Font Size Control -->
-            <div class="form-group" style="margin-top: 15px;">
-                <label>حجم خط الجدول: <span id="fontSizeVal">14px</span></label>
+            <div class="form-group" style="margin-top: 20px;">
+                <label>حجم خط الجدول (للتكبير والتصغير): <span id="fontSizeVal">14px</span></label>
                 <div class="range-container">
-                    <i class="fa-solid fa-font" style="font-size: 12px;"></i>
+                    <i class="fa-solid fa-font" style="font-size: 10px;"></i>
                     <input type="range" class="range-slider" min="10" max="24" value="14" oninput="updateTableFont(this.value)">
-                    <i class="fa-solid fa-font" style="font-size: 18px;"></i>
+                    <i class="fa-solid fa-font" style="font-size: 20px;"></i>
                 </div>
             </div>
 
             <!-- School Tags -->
             <div class="schools-tag-container" id="tagsContainer">
-                <span style="color: #94a3b8; font-size: 0.9rem; align-self: center;">لم يتم إضافة مدارس بعد.</span>
+                <span style="color: #94a3b8; font-size: 0.9rem; align-self: center;">لم يتم إضافة مدارس بعد. أضف المدارس لتظهر في القائمة.</span>
             </div>
 
             <!-- Action Buttons -->
-             <div style="margin-top: 20px; display: flex; gap: 10px; justify-content: flex-end;">
+             <div style="margin-top: 20px; display: flex; gap: 10px; justify-content: flex-end; flex-wrap: wrap;">
                 <button class="btn btn-save" onclick="saveData()">
-                    <i class="fa-solid fa-floppy-disk"></i> حفظ
+                    <i class="fa-solid fa-floppy-disk"></i> حفظ البيانات
+                </button>
+                <button class="btn btn-word" onclick="exportToWord()">
+                    <i class="fa-solid fa-file-word"></i> تصدير إلى Word
                 </button>
                 <button class="btn btn-print" onclick="window.print()">
-                    <i class="fa-solid fa-print"></i> طباعة
+                    <i class="fa-solid fa-print"></i> طباعة الجدول
                 </button>
              </div>
         </section>
 
-        <!-- DISPLAY NAME -->
+        <!-- DISPLAY NAME (For Print) -->
         <div class="schedule-info">
             <span>جدول الزيارات الفصلي</span>
             <span>عضو الفريق التنفيذي: <span id="supervisorDisplay" style="text-decoration: underline;">..................</span></span>
         </div>
-
-        <div class="scroll-hint"><i class="fa-solid fa-arrows-left-right"></i> اسحب الجدول لليسار لعرض باقي الأيام</div>
 
         <!-- TABLE PART 1 -->
         <div class="table-responsive">
@@ -651,7 +639,8 @@
             </table>
         </div>
 
-        <div class="scroll-hint"><i class="fa-solid fa-arrows-left-right"></i> اسحب الجدول لليسار لعرض باقي الأيام</div>
+        <!-- Optional Page Break for Printing -->
+        <div class="page-break"></div>
 
         <!-- TABLE PART 2 -->
         <div class="table-responsive">
@@ -834,7 +823,7 @@
             activeCell = cellElement;
             modal.style.display = "flex";
             
-            const currentText = activeCell.innerText.replace('+', '').trim();
+            const currentText = activeCell.innerText;
             
             checklist.innerHTML = schools.map(school => {
                 const isChecked = currentText.includes(school) ? 'checked' : '';
@@ -867,8 +856,8 @@
             const data = {
                 supervisorName: supervisorInput.value,
                 schoolList: schools,
-                // Map all cells to their content (cleaning up the '+' hint)
-                cells: Array.from(document.querySelectorAll('.cell-content')).map(cell => cell.innerText.replace('+', '').trim())
+                // Map all cells to their content
+                cells: Array.from(document.querySelectorAll('.cell-content')).map(cell => cell.innerText)
             };
             
             localStorage.setItem('scheduleData', JSON.stringify(data));
@@ -917,6 +906,62 @@
         // Init
         updateTableFont(14);
         loadData(); // Load saved data on startup
+
+        // Export to Word Function
+        function exportToWord() {
+            // 1. Clone the main container
+            const mainContainer = document.querySelector('.main-container');
+            const clone = mainContainer.cloneNode(true);
+
+            // 2. Remove unwanted elements (Controls, Buttons)
+            const controls = clone.querySelector('.controls-section');
+            if (controls) controls.remove();
+
+            // 3. Prepare CSS for Word
+            // Word prefers inline styles or simple embedded CSS. We'll simplify the grid header for Word.
+            const css = `
+                <style>
+                    @page { size: landscape; margin: 1cm; }
+                    body { font-family: 'Tajawal', sans-serif; direction: rtl; }
+                    table { border-collapse: collapse; width: 100%; margin-bottom: 20px; }
+                    td, th { border: 1px solid #000; padding: 5px; text-align: center; font-size: 12pt; }
+                    th { background-color: #007A3D; color: #fff; }
+                    .moe-header { text-align: center; border-bottom: 2px solid #007A3D; padding-bottom: 10px; margin-bottom: 20px; }
+                    .header-logo { width: 100px; height: auto; }
+                    .schedule-info { font-weight: bold; margin-bottom: 15px; font-size: 14pt; color: #007A3D; }
+                    .vacation { background-color: #e2e8f0; color: #ef4444; }
+                </style>
+            `;
+
+            // 4. HTML Template for Word
+            const htmlContent = `
+                <html xmlns:o='urn:schemas-microsoft-com:office:office' 
+                      xmlns:w='urn:schemas-microsoft-com:office:word' 
+                      xmlns='http://www.w3.org/TR/REC-html40' dir="rtl">
+                <head>
+                    <meta charset="utf-8">
+                    <title>جدول الزيارات</title>
+                    ${css}
+                </head>
+                <body>
+                    ${clone.innerHTML}
+                </body>
+                </html>
+            `;
+
+            // 5. Create Blob and Download
+            const blob = new Blob(['\ufeff', htmlContent], {
+                type: 'application/msword'
+            });
+            
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = 'جدول_عضو_الفريق_التنفيذي.doc';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
     </script>
 </body>
 </html>
